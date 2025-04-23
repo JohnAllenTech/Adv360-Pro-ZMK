@@ -14,10 +14,30 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
             quick_tap_ms = <175>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+        };
+
+        personal_email_macro: personal_email_macro {
+            compatible = "zmk,behavior-tap-dance";
+            label = "PERSONAL_EMAIL_MACRO";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kt AT_SIGN>, <&personal_email>;
+        };
+    };
+
+    macros {
+        personal_email: personal_email_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_tap>,
+                <&kp J &kp O &kp H &kp N &kp DOT &kp A &kp L &kp L &kp E &kp N &kp DOT &kp I &kp R &kp E &kp L &kp A &kp N &kp D &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+
+            label = "PERSONAL_EMAIL_MACRO";
         };
     };
 
@@ -27,11 +47,11 @@
         default_layer {
             display-name = "Base";
             bindings = <
-&kp EQUAL  &kp N1     &kp N2          &kp N3            &kp N4          &kp N5  &tog 1                                                                     &mo 3               &kp N6  &kp N7           &kp N8             &kp N9           &kp N0    &kp MINUS
-&kp TAB    &kp Q      &kp W           &kp E             &kp R           &kp T   &kp C_SNAPSHOT                                                             &none               &kp Y   &kp U            &kp I              &kp O            &kp P     &kp BSLH
-&kp ESC    &kp A      &hm LEFT_ALT S  &hm LEFT_SHIFT D  &hm LEFT_GUI F  &kp G   &none                       &kp LCTRL  &kp LALT      &kp LGUI   &kp RCTRL  &none               &kp H   &hm RIGHT_GUI J  &hm RIGHT_SHIFT K  &hm RIGHT_ALT L  &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z      &kp X           &kp C             &kp V           &kp B                                          &kp HOME      &kp PG_UP                                 &kp N   &kp M            &kp COMMA          &kp DOT          &kp FSLH  &kp RSHFT
-&mo 2      &kp GRAVE  &kp CAPS        &kp LEFT          &kp RIGHT               &hm LEFT_CONTROL BACKSPACE  &kp DEL    &kp END       &kp PG_DN  &kp ENTER  &hm LEFT_GUI SPACE          &kp UP           &kp DOWN           &kp LBKT         &kp RBKT  &mo 2
+&kp EQUAL  &kp N1     &personal_email  &kp N3            &kp N4          &kp N5  &tog 1                                                                                             &mo 3               &kp N6  &kp N7           &kp N8             &kp N9           &kp N0    &kp MINUS
+&kp TAB    &kp Q      &kp W            &kp E             &kp R           &kp T   &kp C_SNAPSHOT                                                                                     &none               &kp Y   &kp U            &kp I              &kp O            &kp P     &kp BSLH
+&kp ESC    &kp A      &hm LEFT_ALT S   &hm LEFT_SHIFT D  &hm LEFT_GUI F  &kp G   &none                   &kp LCTRL                &kp LALT      &kp LGUI   &kp RCTRL                &none               &kp H   &hm RIGHT_GUI J  &hm RIGHT_SHIFT K  &hm RIGHT_ALT L  &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z      &kp X            &kp C             &kp V           &kp B                                                    &kp HOME      &kp PG_UP                                               &kp N   &kp M            &kp COMMA          &kp DOT          &kp FSLH  &kp RSHFT
+&mo 2      &kp GRAVE  &kp CAPS         &kp LEFT          &kp RIGHT               &hm LEFT_GUI BACKSPACE  &hm LEFT_CONTROL DELETE  &kp END       &kp PG_DN  &hm RIGHT_CONTROL ENTER  &hm LEFT_GUI SPACE          &kp UP           &kp DOWN           &kp LBKT         &kp RBKT  &mo 2
             >;
         };
 
@@ -86,6 +106,16 @@
         extra4 {
             display-name = "Yellow";
             status = "reserved";
+        };
+
+        layer_8 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+            >;
         };
     };
 };
